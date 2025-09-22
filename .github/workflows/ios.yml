@@ -3,21 +3,32 @@ name: Build iOS XCFramework
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:
+  workflow_dispatch: # lets you run it manually from the Actions tab
 
 jobs:
   build:
     runs-on: macos-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up JDK
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
+
+      - name: Make Gradle wrapper executable
+        run: chmod +x ./gradlew
+
+      - name: Install CocoaPods (for iOS integration)
+        run: sudo gem install cocoapods
+
       - name: Build XCFramework
         run: ./gradlew :shared:assembleXCFramework
-      - name: Upload framework
+
+      - name: Upload framework artifact
         uses: actions/upload-artifact@v4
         with:
           name: ios-xcframework
