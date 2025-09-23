@@ -1,3 +1,11 @@
+name: Build KMP Project
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # allows manual trigger
+
+
 jobs:
   build-ios:
     runs-on: macos-latest
