@@ -16,7 +16,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build XCFramework
-        run: ./gradlew :shared:assembleXCFramework
+        run: ./gradlew :composeApp:assembleXCFramework
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
