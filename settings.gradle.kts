@@ -1,4 +1,4 @@
-rootProject.name = "NeueMWGApp"
+rootProject.name = "MWG"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
