@@ -20,6 +20,7 @@ jobs:
             -configuration Release \
             archive \
             -archivePath build/iosApp.xcarchive
+            | tee xcodebuild.log
     
       - name: Export IPA
         run: |
