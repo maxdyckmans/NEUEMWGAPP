@@ -1,35 +1,17 @@
-name: Build KMP Project
-
-on:
-  push:
-    branches: [main]
-  workflow_dispatch: # allows manual trigger
-
 jobs:
-  build-android:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Build Android
-        run: ./gradlew assembleDebug
-
   build-ios:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Make Gradle wrapper executable
         run: chmod +x ./gradlew
+
       - name: Build XCFramework
         run: ./gradlew :shared:assembleXCFramework
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ios-framework
           path: shared/build/XCFrameworks/
-
-  build-desktop:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Build Desktop
-        run: ./gradlew :desktop:build
