@@ -14,7 +14,7 @@ jobs:
       - name: BuildArchive
         run: |
           xcodebuild \
-            -workspace iosApp/iosApp.xcworkspace \
+            -workspace iosApp/iosApp.xcodeproj/project.xcworkspace\
             -scheme iosApp \
             -sdk iphoneos \
             -configuration Release \
