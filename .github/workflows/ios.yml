@@ -16,7 +16,7 @@ jobs:
         run: chmod +x ./gradlew
         
       - name: Build XCFramework
-        run: ./gradlew :composeApp:assembleDebugXCFramework \
+        run: ./gradlew :composeApp:assembleXCFramework\
          -PdisableParallelIosBuild=true --no-daemon
 
       - name: Upload artifact
