@@ -1,4 +1,4 @@
-name: Build KMP Project
+name: Build IOS
 
 on:
   push:
@@ -15,7 +15,11 @@ jobs:
       - name: Make Gradle wrapper executable
         run: chmod +x ./gradlew
 
+      - name: List Gradle Tasks
+        run: ./gradlew :composeApp:tasks --all
+
       - name: Build XCFramework
+    
         run: ./gradlew :composeApp:assembleXCFramework
 
       - name: Upload artifact
